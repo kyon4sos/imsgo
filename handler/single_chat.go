@@ -16,7 +16,7 @@ type SingleChat struct {
 	From string
 }
 
-func (sc *SingleChat) ChannelRead(ctx engine.Context)  {
+func (sc *SingleChat) ChannelRead(ctx *engine.Context)  {
 	err := json.Unmarshal(ctx.Body, sc)
 	if err!=nil {
 		return

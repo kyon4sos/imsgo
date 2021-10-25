@@ -16,7 +16,7 @@ type GroupChat struct {
 //	db.GetDb().Model()
 //}
 
-func (g *GroupChat) ChannelRead(ctx engine.Context) {
+func (g *GroupChat) ChannelRead(ctx *engine.Context) {
 	log.Printf("group chat")
 	allUser := online.GetAllUser()
 	allUser.Range(func(key, value interface{}) bool {

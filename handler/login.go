@@ -9,7 +9,7 @@ type Login struct {
 
 }
 
-func (login *Login) ChannelRead(ctx engine.Context) {
+func (login *Login) ChannelRead(ctx *engine.Context) {
 	log.Println("login")
 	//ctx.Cancel()
 }

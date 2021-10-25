@@ -9,5 +9,5 @@ func (bc *ByteChannel) ChannelRead() {
 
 }
 type ChannelHandler interface {
-	ChannelRead(ctx Context)
+	ChannelRead(ctx *Context)
 }

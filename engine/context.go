@@ -11,9 +11,9 @@ type Context struct {
 	Body []byte
 }
 
-func NewContext(client *Client) Context {
+func NewContext(client *Client) *Context {
 	ctx, cancel := context.WithCancel(context.Background())
-	return Context{
+	return &Context{
 		ctx,
 		cancel,
 		client,

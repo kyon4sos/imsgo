@@ -47,7 +47,6 @@ func (c *Client) read() {
 	//})
 	for {
 		mt, msg, err := c.Conn.ReadMessage()
-
 		//ctx.
 		log.Printf("read message %v %v \n",mt,time.Now())
 		if err != nil {
@@ -110,19 +109,20 @@ func (c *Client) write() {
 }
 
 
-func dispatch(ctx Context) {
+func dispatch(ctx *Context) {
 	for i := range channelHandlers {
 		_, ok := channelHandlers[i].(ChannelHandler)
 		if !ok {
 			log.Println("no handler")
 			return
 		}
-		channelHandlers[i].ChannelRead(ctx)
 		select {
 		case _ = <-ctx.Done():
 			log.Println("done")
 			//c.Conn.Close()
-			return
+			//return
+		default:
 		}
+		channelHandlers[i].ChannelRead(ctx)
 	}
 }

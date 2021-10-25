@@ -10,7 +10,7 @@ type app struct {
 	Clients    map[*Client]bool
 	Register   chan *Client
 	Unregister chan *Client
-	Channel    chan  Context
+	Channel    chan  *Context
 }
 
 var channelHandlers []ChannelHandler
@@ -23,7 +23,7 @@ func NewApp() *app {
 		Clients:    make(map[*Client]bool),
 		Register:   make(chan *Client),
 		Unregister: make(chan *Client),
-		Channel:    make(chan Context),
+		Channel:    make(chan *Context),
 	}
 	return app
 }
